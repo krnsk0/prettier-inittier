@@ -1,0 +1,9 @@
+node_modules/
+coverage/
+dist/
+.vscode/
+README.md
+LICENSE
+.lintignore
+package-lock.json
+.nvmrc

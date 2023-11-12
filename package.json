@@ -1,0 +1,64 @@
+{
+  "name": "prettier-inittier",
+  "version": "1.0.3",
+  "description": "interactive git branch checkout",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "npm run build && node dist/index.js",
+    "build": "tsc",
+    "test": "vitest --coverage",
+    "test:ci": "vitest run --coverage",
+    "lint:files": "eslint --ignore-path ./.lintignore",
+    "lint": "npm run lint:files .",
+    "format:files": "prettier --ignore-path ./.lintignore --write",
+    "format": "npm run format:files .",
+    "prepare": "simple-git-hooks",
+    "make-badges": "jest-coverage-badges --output './static' && git add static/* && git commit -m 'update badges' --no-verify"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npm run format && npm run lint",
+    "pre-push": "npm run test:ci"
+  },
+  "bin": {
+    "prettier-inittier": "./dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:krnsk0/prettier-inittier.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "keywords": [
+    "git",
+    "cli",
+    "interactive",
+    "branch"
+  ],
+  "author": "jkurinsky@fastmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/krnsk0/prettier-inittier/issues"
+  },
+  "homepage": "https://github.com/krnsk0/prettier-inittier#readme",
+  "devDependencies": {
+    "@types/prompts": "^2.4.4",
+    "@types/shelljs": "^0.8.12",
+    "@typescript-eslint/eslint-plugin": "^6.7.2",
+    "@typescript-eslint/parser": "^6.7.2",
+    "@vitest/coverage-istanbul": "^0.34.5",
+    "eslint": "^8.50.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-vitest": "^0.3.1",
+    "jest-coverage-badges": "^1.1.2",
+    "prettier": "^3.0.3",
+    "simple-git-hooks": "^2.9.0",
+    "typescript": "^5.2.2",
+    "vitest": "^0.34.5"
+  },
+  "dependencies": {
+    "kleur": "^4.1.5",
+    "prompts": "^2.4.2",
+    "shelljs": "^0.8.5"
+  }
+}
