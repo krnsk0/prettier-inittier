@@ -1,9 +1,8 @@
 import { access } from 'fs/promises';
 
-export type PackageManager = 'yarn' | 'npm' | 'pnpm' | 'bun' | 'unknown';
+export type PackageManager = 'yarn' | 'npm' | 'pnpm' | 'unknown';
 
 export async function detectPackageManager(): Promise<PackageManager> {
-  console.log('*** detectPackageManager');
   const results = await Promise.all([
     access('pnpm-lock.yaml')
       .then(() => 'pnpm')
