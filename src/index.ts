@@ -1,9 +1,9 @@
 #! /usr/bin/env node
 import kleur from 'kleur';
-import { menu as topMenu } from './topMenu';
+import { main } from './main';
 import { EXITING } from './strings';
 
-topMenu()
+main()
   .then(() => {
     console.log(kleur.grey(EXITING));
     process.exit(1);
