@@ -1,7 +1,7 @@
 {
   "name": "prettier-inittier",
-  "version": "1.0.3",
-  "description": "interactive git branch checkout",
+  "version": "1.1.0",
+  "description": "one-liner to install and configure prettier",
   "main": "dist/index.js",
   "scripts": {
     "start": "npm run build && node dist/index.js",
