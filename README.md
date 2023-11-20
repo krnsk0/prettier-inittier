@@ -1,7 +1,6 @@
-> Interactive git branch checkout
+> one command, `npx prettier-inittier`, to install and configure prettier
 
 # prettier-inittier
-
 
 ![Coverage lines](./static/badge-lines.svg)
 ![Coverage functions](./static/badge-functions.svg)
