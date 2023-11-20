@@ -25,15 +25,22 @@ import { installPrettier } from './utils/installPrettier';
 import { writeDefaultConfig } from './utils/writeDefaultConfig';
 
 export const main = async () => {
-  console.log(CHECKING_FOR_CONFIG);
-  if (!doesDefaultConfigExist()) {
-    console.log(WRITE_CONFIG);
-    await writeDefaultConfig();
-  } else {
-    console.log(FOUND_CONFIG);
-  }
-  console.log(CHECKING_FOR_PACKAGE_JSON);
   try {
+    /**
+     * Global config
+     */
+    console.log(CHECKING_FOR_CONFIG);
+    if (!doesDefaultConfigExist()) {
+      console.log(WRITE_CONFIG);
+      await writeDefaultConfig();
+    } else {
+      console.log(FOUND_CONFIG);
+    }
+
+    /**
+     * Package json
+     */
+    console.log(CHECKING_FOR_PACKAGE_JSON);
     if (!(await checkForPackageJson())) {
       console.log(NO_PACKAGE_JSON);
       return;
@@ -46,6 +53,10 @@ export const main = async () => {
       return;
     }
     console.log(PACKAGE_MANAGER_FOUND, packageManager);
+
+    /**
+     * Prettier installation & config
+     */
     console.log(CHECK_FOR_PRETTIER);
     if (await checkForPrettierInstallation()) {
       console.log(PRETTIER_ALREADY_INSTALLED);
@@ -58,7 +69,6 @@ export const main = async () => {
     await createLocalConfig();
     console.log(DONE);
   } catch (error: unknown) {
-    console.error(ERROR);
-    console.error(error);
+    console.error(ERROR, error);
   }
 };
